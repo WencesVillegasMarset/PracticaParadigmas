@@ -9,8 +9,8 @@ import EjercicioSeis.Componentes.Chasis;
 import EjercicioSeis.Componentes.Motor;
 import EjercicioSeis.Componentes.Rueda;
 import EjercicioSeis.Principal.Fabrica;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -21,10 +21,10 @@ public abstract class Producto implements Vehiculo {
     public Fabrica construidoPor;
     
     //Hash para componentes
-    public Map<String, Chasis> compuesto = new HashMap<>();
-    public Map<String, Motor> impulsado = new HashMap<>();
-    public Map<String, Rueda> usa = new HashMap<>();
-
+    protected Chasis compuesto;
+    protected Motor impulsado;
+    public ArrayList<Rueda> usa = new ArrayList<>();
+    
     
     public void verDatos(){
         //muestra los datos vinculados al objeto(fabricante, precio, número demotor y chasis, marca de las ruedas que usa)

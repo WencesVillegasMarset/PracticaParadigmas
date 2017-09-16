@@ -16,7 +16,7 @@ import EjercicioSeis.Componentes.Rueda;
 public interface Vehiculo {
     public Motor getMotor();
     public Chasis getChasis();
-    public Rueda getRueda();
-    public void ponerMotor();
-    public void ponerRueda();
+    public String getRueda();
+    public void ponerMotor(Motor motor);
+    public void ponerRueda(Rueda rueda);
 }

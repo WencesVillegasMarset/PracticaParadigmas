@@ -8,31 +8,48 @@ package EjercicioSeis.Vehiculos;
 import EjercicioSeis.Componentes.Chasis;
 import EjercicioSeis.Componentes.Motor;
 import EjercicioSeis.Componentes.Rueda;
+import EjercicioSeis.Principal.Fabrica;
+import java.util.Scanner;
 
 /**
  *
  * @author Wences
  */
 public class Auto extends Producto{
+    
+    
+    public Auto(Chasis chasis, Fabrica fabrica) {
+        Scanner imput = new Scanner(System.in);
+        System.out.println("Ingrese el numero de Chasis");
+        String numeroChasis = imput.nextLine();
+        compuesto = new Chasis(numeroChasis);
+        construidoPor = fabrica;
+    }
 
     @Override
     public Motor getMotor() {
+        return impulsado;
     }
 
     @Override
     public Chasis getChasis() {
+        return compuesto;
     }
 
     @Override
-    public Rueda getRueda() {
+    public String getRueda() {
+        return usa.get(0).getMarca();
     }
 
     @Override
-    public void ponerMotor() {
+    public void ponerMotor(Motor motor) {
+        impulsado = motor;
+        
     }
 
     @Override
-    public void ponerRueda() {
+    public void ponerRueda(Rueda rueda) {
+        usa.add(rueda);
     }
     
 }

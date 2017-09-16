@@ -9,6 +9,7 @@ import EjercicioSeis.Componentes.Chasis;
 import EjercicioSeis.Vehiculos.Auto;
 import EjercicioSeis.Vehiculos.Camion;
 import EjercicioSeis.Vehiculos.Producto;
+import java.util.Scanner;
 
 /**
  *
@@ -36,10 +37,13 @@ public class Fabrica {
     }
     
     public Auto crear(Chasis c, Fabrica f){
-        return new Auto();
+        return new Auto(c, f);
     }
     public Camion crear(Fabrica f, Chasis c){
-        return new Camion();
+        Scanner input = new Scanner(System.in);
+        System.out.println("Ingrese la capacidad de Carga");
+        int capCarga = input.nextInt();
+        return new Camion(capCarga, c,f);
     }
     
     
