@@ -81,10 +81,10 @@ public class Lote implements Cloneable, Serializable {
         this.inscripto = registroAGuardar;
         //registroAGuardar.registrar(this);
     }
-    public void agregarEscritura(Escritura escritura){
+    /*public void agregarEscritura(Escritura escritura){
         this.pertenece = escritura;
     }    
-    
+    */
     public void setConstruccion(Edificio edificio)throws ErrorLote{
         if (this.construccion == null) {
             this.construccion = edificio;

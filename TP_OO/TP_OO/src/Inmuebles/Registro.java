@@ -1,6 +1,7 @@
 package Inmuebles;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 
 
@@ -33,7 +34,10 @@ public class Registro implements Serializable{
     }
     public void emitirBoletos(){
         for (int i = 0; i < inmueble.length; i++) {
-            System.out.println("Datos Lote N°" + i);
+            if (inmueble[i] == null) {
+                continue;
+            }
+            System.out.println("Datos Lote N°" + i+1);
             inmueble[i].mostrar();
         }
     }
@@ -45,6 +49,12 @@ public class Registro implements Serializable{
                 break;
             }
         }
+        Scanner input = new Scanner(System.in);
+        System.out.println("Ingrese el numero de la escritura");
+        Integer numeroEscritura = input.nextInt();        
+        Escritura escritura = new Escritura(Integer.SIZE, lote.superficie, municipio, lote);
+        System.out.println("Escritura Creada!");
+        lote.pertenece =  escritura;
         
     }
     public double valuar(){
@@ -64,6 +74,8 @@ public class Registro implements Serializable{
     public void setTasa(float tasa) {
         this.tasa = tasa;
     }
+   
+
     
     
     

@@ -1,5 +1,6 @@
 package Inmuebles;
-
+//composicion se da la relacion en el constructor 
+//agregacion y asociociacion se hace por metodos de set
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -49,31 +50,7 @@ public class TesterParaEjercicios {
                     break;
             }        
         }while(ejercicio != 0);
-        Lote sampleLote = new Lote(123, "San martin", 1234, 1);
-        try{
-            FileOutputStream fs = new FileOutputStream("loteYRegistro.ser");
-            ObjectOutputStream os = new ObjectOutputStream(fs);
-            os.writeObject(sampleLote);
-            os.close();
-            //deserializing
-            FileInputStream fileIn = new FileInputStream("loteYRegistro.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            Lote loteRecuperado =(Lote) in.readObject();
-            in.close();
-            fileIn.close();
-            loteRecuperado.mostrar();
-
-            
-        }
-        catch(FileNotFoundException exc){
-            exc.getMessage();
-        }
-        catch (IOException exc){
-            exc.getMessage();
-        }
-        catch(Exception exc){
-            exc.getMessage();
-        }
+        
     }
     
     public static void ejercicioUno(){
@@ -96,17 +73,73 @@ public class TesterParaEjercicios {
         segundoLote.mostrar();
     }
     public static void ejercicioTres(){
-    
+        System.out.println("Creando Lote con ID = 3, Domicilio: La Paz 416, avaluo x metro = 2 y 500 m de superficie");
+        Lote primerLote = new Lote(2, "La Paz 416", 2, 500);
+        System.out.println("Creando un regigistro para Lote...");
+        Registro primerRegistro = new Registro(415, "Lujan de Cuyo", 234, 10);
+        System.out.println("Vinculando lote con registro");
+        primerRegistro.registrar(primerLote);
+        System.out.println("Mostrando Lotes registrados por el primer registro");
+        primerRegistro.emitirBoletos();
+        System.out.println("Mostrando 1 si el primerLote se encuentra en primerRegistro sino muestra 0");
+        if (primerRegistro.equals(primerLote.inscripto)) {
+            System.out.println(1);
+        } else {System.out.println(0);
+        }
+        System.out.println("Quiere serializar el registro? 1=SI / 0=NO");
+        Scanner input = new Scanner(System.in);
+        int condicion = input.nextInt();
+        if (condicion == 1) {
+            serializar(primerRegistro);
+        } else{
+            if (condicion == 0) {
+                System.out.println("Saliendo sin serializar");
+            } else {
+                System.out.println("Opcion Invalida! Saliendo sin serializar.");
+            }
+        }
+        
+        
     }
     public static void ejercicioCuatro(){
+        
     }
     public static void ejercicioCinco(){
     }
     public static void ejercicioSeis(){
+        System.out.println("Ejericio Opcional, en desarrollo...");
     }
     public static void ejercicioSiete(){
+        System.out.println("Ejericio Opcional, en desarrollo...");
+
     }
     public static void ejercicioOcho(){
+        System.out.println("Ejericio Opcional, en desarrollo...");
+
+    }
+    public static void serializar(Registro registro){
+        try{
+            FileOutputStream fs = new FileOutputStream("registro.ser");
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            os.writeObject(registro);
+            os.close();
+            //deserializing
+            FileInputStream fileIn = new FileInputStream("registro.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            Registro registroRecuperado =(Registro) in.readObject();
+            in.close();
+            fileIn.close();
+            registroRecuperado.emitirBoletos();
+        }
+        catch(FileNotFoundException exc){
+            exc.getMessage();
+        }
+        catch (IOException exc){
+            exc.getMessage();
+        }
+        catch(Exception exc){
+            exc.getMessage();
+        }
     }
     
     

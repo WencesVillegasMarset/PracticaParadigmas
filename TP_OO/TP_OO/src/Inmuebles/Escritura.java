@@ -22,7 +22,6 @@ public class Escritura {
         this.superficie = superficie;
         this.domicilio = domicilio;
         this.esDe = esDeLote;
-        esDeLote.agregarEscritura(this);
     }
     public Escritura copia(){
         Escritura nuevaCopia = new Escritura(numero, superficie, domicilio, esDe);
