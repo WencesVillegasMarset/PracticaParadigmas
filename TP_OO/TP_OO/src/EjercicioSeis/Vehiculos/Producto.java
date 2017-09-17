@@ -28,6 +28,11 @@ public abstract class Producto implements Vehiculo {
     
     public void verDatos(){
         //muestra los datos vinculados al objeto(fabricante, precio, número demotor y chasis, marca de las ruedas que usa)
+        System.out.println("Fabricante: " + construidoPor);
+        System.out.println("Precio: " + precio);
+        System.out.println("Numero de Motor: " + impulsado.getNumero());
+        System.out.println("Numero de Chasis: " + compuesto.getNumero());
+        System.out.println("Marca y numero de Ruedas: " + usa.get(0).getMarca() + " -- " + usa.size());
     }
 
     public float getPrecio() {

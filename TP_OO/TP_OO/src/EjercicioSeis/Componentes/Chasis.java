@@ -26,6 +26,10 @@ public class Chasis {
     public Chasis(String numero) {
         this.numero = numero;
     }
+
+    public String getNumero() {
+        return numero;
+    }
     
     
 }
