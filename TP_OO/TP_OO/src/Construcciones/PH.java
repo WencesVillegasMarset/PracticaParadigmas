@@ -16,6 +16,9 @@ import java.util.ArrayList;
 public  class PH extends Edificio{
     public byte cantPisos;
     public ArrayList<Departamento> unidad;
+    public PH(byte cantidadPisos){
+        this.cantPisos = cantidadPisos;
+    }
     
     @Override
     public void demoler(){

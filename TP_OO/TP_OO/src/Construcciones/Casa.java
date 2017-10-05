@@ -24,8 +24,4 @@ public class Casa extends Edificio {
         
         return valor;
     }
-    @Override
-    public void demoler(){
-        System.out.println("Demolicion?");
-    }
 }

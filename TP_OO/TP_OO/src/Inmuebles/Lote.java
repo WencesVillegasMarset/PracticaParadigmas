@@ -88,6 +88,7 @@ public class Lote implements Cloneable, Serializable {
     public void setConstruccion(Edificio edificio)throws ErrorLote{
         if (this.construccion == null) {
             this.construccion = edificio;
+            edificio.setConstruccion(this);
         }
         else {
             throw new ErrorLote();

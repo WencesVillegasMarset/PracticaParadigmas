@@ -2,6 +2,8 @@ package Inmuebles;
 //composicion se da la relacion en el constructor 
 //agregacion y asociociacion se hace por metodos de set
 
+import Construcciones.Casa;
+import Construcciones.PH;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -102,6 +106,44 @@ public class TesterParaEjercicios {
         
     }
     public static void ejercicioCuatro(){
+        System.out.println("Creando Lote con ID = 3, Domicilio: La Paz 416, avaluo x metro = 2 y 500 m de superficie");
+        Lote primerLote = new Lote(2, "La Paz 416", 2, 500);
+        System.out.println("Creando un regigistro para Lote...");
+        Registro primerRegistro = new Registro(415, "Lujan de Cuyo", 234, 10);
+        System.out.println("Vinculando lote con registro");
+        primerRegistro.registrar(primerLote);
+        System.out.println("Mostrando Lotes registrados por el primer registro");
+        primerRegistro.emitirBoletos();
+        System.out.println("Mostrando 1 si el primerLote se encuentra en primerRegistro sino muestra 0");
+        if (primerRegistro.equals(primerLote.inscripto)) {
+            System.out.println(1);
+        } else {System.out.println(0);
+        }
+        System.out.println("Creando una Casa en el Lote con id de domicilio:  " + primerLote.getDomicilio());
+        Edificio primerCasa = new Casa(500, true);
+        try {
+            primerLote.setConstruccion(primerCasa);
+        } catch (ErrorLote ex) {
+            System.out.println("No permitido agregar mas de una construccion!");
+        }
+        System.out.println("Creando una PH en el lote de domicilio: " + primerLote.getDomicilio());
+        byte numeroPisos = 5;
+        Edificio primerPH = new PH(numeroPisos);
+        try {
+            primerLote.setConstruccion(primerPH);
+        } catch (ErrorLote ex) {
+            System.out.println("No permitido agregar mas de una construccion!");
+        }
+        primerCasa.demoler();
+        System.out.println("Casa demolida");
+         try {
+            primerLote.setConstruccion(primerPH);
+             System.out.println("PH agregado!");
+        } catch (ErrorLote ex) {
+            System.out.println("No permitido agregar mas de una construccion!");
+        }
+        
+        
         
     }
     public static void ejercicioCinco(){
