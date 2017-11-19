@@ -20,7 +20,7 @@ public class Estudiante extends Persona{
     public String getLegajo() {
         return legajo.toString();
     }
-        public Estudiante(Integer legajo, String nombre){
+    public Estudiante(Integer legajo, String nombre){
         super(nombre);
         this.legajo = legajo;
     }

@@ -16,15 +16,13 @@ import java.util.Scanner;
  * @author Wences
  */
 public class Auto extends Producto{
-    
-    
+
     public Auto(Chasis chasis, Fabrica fabrica) {
-        Scanner imput = new Scanner(System.in);
-        System.out.println("Ingrese el numero de Chasis");
-        String numeroChasis = imput.nextLine();
-        compuesto = new Chasis(numeroChasis);
-        construidoPor = fabrica;
+        super(chasis, fabrica);
     }
+    
+    
+    
 
     @Override
     public Motor getMotor() {

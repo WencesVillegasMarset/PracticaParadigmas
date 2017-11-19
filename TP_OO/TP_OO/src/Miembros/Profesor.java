@@ -25,6 +25,10 @@ public class Profesor  extends Persona {
     public void getDocente() {
         System.out.println(docente.getTitulo());
     }
+
+    public String getNombre() {
+        return nombre;
+    }
     
     
 }

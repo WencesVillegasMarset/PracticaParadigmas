@@ -2,8 +2,15 @@ package Inmuebles;
 //composicion se da la relacion en el constructor 
 //agregacion y asociociacion se hace por metodos de set
 
+import Asignaturas.Curso;
 import Construcciones.Casa;
 import Construcciones.PH;
+import EjercicioSeis.Componentes.Chasis;
+import EjercicioSeis.Principal.Fabrica;
+import EjercicioSeis.Vehiculos.Auto;
+import Miembros.ErrorInscripcion;
+import Miembros.Estudiante;
+import Miembros.Profesor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,8 +18,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -147,9 +152,44 @@ public class TesterParaEjercicios {
         
     }
     public static void ejercicioCinco(){
+        System.out.println("Creando Estudiante Juan Lopez");
+        Estudiante est1 = new Estudiante(1234, "Juan Lopez");
+        System.out.println("Creando Curso: Matematica A");
+        Curso cursoM = new Curso("Matematica A");
+        try {
+            est1.inscribir(cursoM);
+        } catch (ErrorInscripcion ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("Mostrando Inscriptos");
+        cursoM.inscriptos();
+        System.out.println("Agregando mas cursos");
+        Curso lengua = new Curso("Lengua");
+        Curso hist = new Curso("Historia");
+        Curso ml = new Curso("Machine Learning");
+        System.out.println("Inscribiento a Juan Lopez a 3 cursos mas");
+        try {
+            est1.inscribir(ml);
+            est1.inscribir(hist);
+            est1.inscribir(lengua);
+        } catch (ErrorInscripcion ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("Mostrando cursos a los que esta inscripto Juan Lopez");
+        est1.getCursos();
+        System.out.println("Creando Nuevo Profesor para Machine Learning");
+        Profesor profe = new Profesor("Andrew Ng");
+        profe.dicta(ml);
+        System.out.print(profe.getNombre() + " dicta: ");
+        profe.getDocente();
+               
     }
     public static void ejercicioSeis(){
-        System.out.println("Ejericio Opcional, en desarrollo...");
+        Fabrica fab = new Fabrica("Factory 1");
+        System.out.println("Fabrica Factory1 creada, fabricando auto...");
+        Chasis c = new Chasis("1254r1");          
+        Auto nuevo = fab.crear(c, fab);
+        System.out.println("Auto creado!");
     }
     public static void ejercicioSiete(){
         System.out.println("Ejericio Opcional, en desarrollo...");

@@ -10,6 +10,7 @@ import EjercicioSeis.Componentes.Motor;
 import EjercicioSeis.Componentes.Rueda;
 import EjercicioSeis.Principal.Fabrica;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 /**
@@ -25,6 +26,10 @@ public abstract class Producto implements Vehiculo {
     protected Motor impulsado;
     public ArrayList<Rueda> usa = new ArrayList<>();
     
+    public Producto(Chasis chasis, Fabrica fabrica) {
+        compuesto = chasis;
+        construidoPor = fabrica;
+    }
     
     public void verDatos(){
         //muestra los datos vinculados al objeto(fabricante, precio, número demotor y chasis, marca de las ruedas que usa)

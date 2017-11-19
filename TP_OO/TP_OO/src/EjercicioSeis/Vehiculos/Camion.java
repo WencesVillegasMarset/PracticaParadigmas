@@ -18,17 +18,10 @@ import java.util.Scanner;
 public class Camion extends Producto{
     private int capCarga;
 
-    public Camion(int capCarga, Chasis chasis, Fabrica fabrica) {
+    public Camion(int capCarga,Chasis chasis, Fabrica fabrica) {
+        super(chasis, fabrica);
         this.capCarga = capCarga;
-        Scanner imput = new Scanner(System.in);
-        System.out.println("Ingrese el numero de Chasis");
-        String numeroChasis = imput.nextLine();
-        compuesto = new Chasis(numeroChasis);
-        construidoPor = fabrica;
-         
-    }
-    
-    
+    }   
 
     public int getCapCarga() {
         return capCarga;
